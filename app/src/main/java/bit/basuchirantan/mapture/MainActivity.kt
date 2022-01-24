@@ -2,9 +2,7 @@ package bit.basuchirantan.mapture
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import bit.basuchirantan.mapture.models.MapsAdapter
 import bit.basuchirantan.mapture.models.Place
 import bit.basuchirantan.mapture.models.UserMap
 import androidx.recyclerview.widget.RecyclerView as RecyclerView
