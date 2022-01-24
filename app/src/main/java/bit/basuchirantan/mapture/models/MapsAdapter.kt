@@ -1,4 +1,4 @@
-package bit.basuchirantan.mapture
+package bit.basuchirantan.mapture.models
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import bit.basuchirantan.mapture.models.UserMap
 
 class MapsAdapter(val context: Context, val userMaps: List<UserMap>):
     RecyclerView.Adapter<MapsAdapter.ViewHolder>() {

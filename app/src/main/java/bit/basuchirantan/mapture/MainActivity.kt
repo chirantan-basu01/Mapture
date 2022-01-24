@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import bit.basuchirantan.mapture.models.MapsAdapter
+import bit.basuchirantan.mapture.models.Place
 import bit.basuchirantan.mapture.models.UserMap
 import androidx.recyclerview.widget.RecyclerView as RecyclerView
 
@@ -20,9 +22,10 @@ class MainActivity : AppCompatActivity() {
         rvMaps = findViewById(R.id.rvMaps)
         rvMaps.layoutManager = LinearLayoutManager(this)
         // Set adapter on the recycler view
-        rvMaps.adapter = MapsAdapter(this, userMaps)
+        rvMaps.adapter = MapsAdapter(this,userMaps)
 
     }
+
     private fun generateSampleData(): List<UserMap> {
         return listOf(
             UserMap(
