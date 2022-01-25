@@ -4,12 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import bit.basuchirantan.mapture.models.Place
 import bit.basuchirantan.mapture.models.UserMap
 import androidx.recyclerview.widget.RecyclerView as RecyclerView
 
 const val EXTRA_USER_MAP = "EXTRA_USER_MAP"
+private const val REQUEST_CODE = 1234
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     private lateinit var rvMaps: RecyclerView
@@ -33,6 +35,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+        val fabCreateMap: View = findViewById(R.id.fabCreateMap)
+        fabCreateMap.setOnClickListener{
+            Log.i(TAG,"Tap on FAB")
+            val intent = Intent(this@MainActivity,CreateMapActivity::class.java)
+            startActivityForResult(intent,REQUEST_CODE)
+        }
     }
 
     private fun generateSampleData(): List<UserMap> {
