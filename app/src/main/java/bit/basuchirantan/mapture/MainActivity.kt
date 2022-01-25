@@ -1,12 +1,16 @@
 package bit.basuchirantan.mapture
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import bit.basuchirantan.mapture.models.Place
 import bit.basuchirantan.mapture.models.UserMap
 import androidx.recyclerview.widget.RecyclerView as RecyclerView
 
+const val EXTRA_USER_MAP = "EXTRA_USER_MAP"
+private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     private lateinit var rvMaps: RecyclerView
 
@@ -20,8 +24,15 @@ class MainActivity : AppCompatActivity() {
         rvMaps = findViewById(R.id.rvMaps)
         rvMaps.layoutManager = LinearLayoutManager(this)
         // Set adapter on the recycler view
-        rvMaps.adapter = MapsAdapter(this,userMaps)
-
+        rvMaps.adapter = MapsAdapter(this,userMaps,object: MapsAdapter.OnClickListener{
+            override fun onItemClick(position: Int) {
+                Log.i(TAG,"onItemClick $position")
+                //When user taps on view in RV, navigate to new activity
+                val intent = Intent(this@MainActivity,DisplayMapActivity::class.java)
+                intent.putExtra(EXTRA_USER_MAP,userMaps[position])
+                startActivity(intent)
+            }
+        })
     }
 
     private fun generateSampleData(): List<UserMap> {
